@@ -12,7 +12,7 @@
       <text style='color:{{nowweather.aqibgcolor}};margin-right:2px;'>◆</text><text>空气指数{{nowweather.aqi}}：{{nowweather.aqistr}}</text>
     </view>
     <view bindtap="btnWelcomeCopy" class='weui-flex' style="justify-content: space-between;align-items: center;width:100%;background:#fff;padding-top:5px;">
-      <block wx:for='{{weather}}'>
+      <block wx:for='{{weather}}' wx:key="key">
         <view class="weui-flex__item" style="font-size:12px;text-align:center;background:#fff;border-right:#f2f2f2 1px solid;padding-bottom:8px;">
           <view style="font-size:10px;overflow:hidden;">
             <text style='margin-right:5px;'>{{item.week}}</text>
@@ -35,7 +35,7 @@
     </view>
   </view>
   <swiper wx:if="{{topbanner}}" autoplay='true' circular='true' indicator-dots='{{topbanner.length>1}}' style='width:100%;height:100px;margin-bottom:0px;background:#fff;margin-top:-10px;'>
-    <block wx:for="{{topbanner}}">
+    <block wx:for="{{topbanner}}" wx:key="type">
       <swiper-item style='width:100%;'>
         <form bindsubmit='btnTopBannerSubmit' report-submit='true' id='{{index}}' style='width:100%;height:100px'>
           <button form-type='submit' plain='true' style='width:100%;height:100px;border:none;padding:0;border-radius:0;'>
@@ -46,7 +46,7 @@
     </block>
   </swiper>
   <swiper style='margin-bottom:10px;background:#fff;height:{{fastNavCount/4*70}}px;' indicator-dots='{{fastnav.length/fastNavCount>1}}'>
-    <block wx:for="{{fastnav.length/fastNavCount}}" wx:for-index="i">
+    <block wx:for="{{fastnav.length/fastNavCount}}" wx:for-index="i" wx:key="key">
     <swiper-item>
   <view style="display:flex;flex-wrap:wrap;">
     <block wx:for="{{fastNavCount}}" wx:for-index="j">
@@ -122,7 +122,7 @@
   </view>
 
   <view style="width:100%;">
-    <block wx:for="{{list}}">
+    <block wx:for="{{list}}" wx:key="key">
       <template is="articleitem-navitem" data="{{...item}}"></template>
     </block>
     <view wx:if="{{list.length>0}}" bindtap="btnForum" style="width:100%;font-size:16px;color:#999;text-align:center;padding:10px;">
